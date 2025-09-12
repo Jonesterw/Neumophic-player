@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="assets/icons/music-player-svgrepo-com (1).svg" type="image/svg+xml">
+    <title> Neumophic Player</title>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class = "container">
+        <div class = "side-bar" id="sidebar">
+            <div class="logo-and-name">
+                <div class="logo">
+                    <img src="assets/icons/music-player-svgrepo-com (1).svg" alt="Logo">
+                </div>
+                <div class="name">Neumophic Player</div>
+            </div>
+            <div class = "search-area">
+                <input type="text" class = "search-bar" placeholder="Search...">
+            </div>
+            <div class = "areas">
+                <div class = "music-library">
+                    <img src="assets/icons/music-player-svgrepo-com.svg" alt="Music Library">
+                    <div class = "area-name">Music Library</div>
+                </div>
+                <div class = "recent">
+                    <img src="assets/icons/recent-svgrepo-com.svg" alt="Recent">
+                    <div class = "area-name">Recent</div>
+                </div>
+                <div class = "favourite">
+                    <img src="assets/icons/favourite-heart-svgrepo-com.svg" alt="Favourite">
+                    <div class = "area-name">Favourite</div>
+                </div>
+                <div class = "playlist">
+                    <img src="assets/icons/library-svgrepo-com.svg" alt="Playlist">
+                    <div class = "area-name">Playlist</div>
+                </div>
+            </div>
+            <div class = "remain-space">
+                <div class="theme-switch-container">
+                    <img src="assets/icons/sun-svgrepo-com.svg" alt="Theme">
+                    <div class="area-name">Dark Mode</div>
+                    <label class="theme-switch">
+                        <input type="checkbox" id="theme-toggle">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="settings">
+                    <img src="assets/icons/settings-svgrepo-com.svg" alt="Settings">
+                    <div class = "area-name">Settings</div>
+                </div>
+            </div>
+        </div>
+        <div class = "main-area">
+            <div class = "music-library-interface1" id = "visible">
+                <div class = "top-bar">
+                    <div class = "title"><span id = "title">Music Library</span></div>
+                    <div class = "two-options">
+                        <div class = "shuffle">Shuffle and Play</div>
+                        <div class="sort-by-container">
+                            <div class = "sort-by">Sort by:</div>
+                            <ul class="sort-options">
+                                <li>Title</li>
+                                <li>Artist</li>
+                                <li>Album</li>
+                                <li>Duration</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class = "music-list">
+                    <div class="music-list-header">
+                        <div class="song-info-header">
+                            <div class="header-title">Title</div>
+                            <div class="header-artist">Artist</div>
+                            <div class="header-album">Album</div>
+                            <div class="header-duration">Duration</div>
+                        </div>
+                    </div>
+                    <ul class = "songs">
+                        <!-- Songs will be loaded here by JavaScript -->
+                    </ul>
+
+                </div>
+                <div class = "player">
+                    <div class = "music-info">
+                        <div class = "current-song">Select a song</div>
+                        <div class = "current-artist"></div>
+                        <div class = "current-album"></div>
+                        <img src="assets/album art/bad and bougee.jfif" alt="Album Art" class = "album-art"></img>
+                    </div>
+                    <div class = "controls">
+                        <div class = "player-controls">
+                            <button class = "shuffle-button">
+                                <img src="assets/icons/music-player-random-svgrepo-com.svg" alt="Shuffle">
+                            </button>
+                            <button class = "prev-button"></button>
+                            <button class = "play-button">
+                            </button>
+                            <button class = "next-button">
+                            </button>
+                            <button class = "repeat-button">
+                                <img src="assets/icons/repeat-svgrepo-com.svg" alt="Repeat">
+                            </button>
+                        </div>
+                        <div class = "volume-controls">
+                            <button class = "mute-button">
+                                <img src="assets/icons/volume-high-svgrepo-com.svg" alt="Volume">
+                            </button>
+                            <input type="range" class = "volume-slider" min="0" max="100" value="100">
+                            <div class = "current-volume">100%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class = "recent-interface2" id = "hidden">
+
+            </div>
+            <div class = "favourite-interface3" id = "hidden">
+
+            </div>
+            <div class = "playlist-interface4" id = "hidden">
+
+            </div>
+            <div class = "settings-interface5" id = "hidden">
+
+            </div>
+            <div class = "player-interface">
+                <audio id="audio-player"></audio>
+            </div>
+
+        </div>
+
+    </div>
+    <script src="playlist.js" defer></script>
+    <script src="script.js" defer></script>
+</body>
+</html>

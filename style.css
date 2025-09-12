@@ -1,0 +1,639 @@
+/* CSS HEX */
+:root {
+    --french-gray: #C9D2DDff;
+    --battleship-gray: #939596ff;
+    --antiflash-white: #EAEEF0ff;
+    --antiflash-white-2: #EBEEF1ff;
+    --french-gray-2: #CDD5DFff;
+
+    /* Neumorphic Shadows */
+    --shadow-dark: #b8bec6;
+    --shadow-light: #ffffff;
+    --text-active: #666;
+}
+
+/* CSS HSL */
+/* SCSS Gradient */
+/* I'm commenting out the SCSS gradient because it's not valid CSS.
+If you want to use SCSS, you'll need to set up a build process to compile it to CSS.
+I'm leaving the definitions here for reference. */
+/*
+$gradient-top: linear-gradient(0deg, #C9D2DDff, #939596ff, #EAEEF0ff, #EBEEF1ff, #CDD5DFff);
+$gradient-right: linear-gradient(90deg, #C9D2DDff, #939596ff, #EAEEF0ff, #EBEEF1ff, #CDD5DFff);
+$gradient-bottom: linear-gradient(180deg, #C9D2DDff, #939596ff, #EAEEF0ff, #EBEEF1ff, #CDD5DFff);
+$gradient-left: linear-gradient(270deg, #C9D2DDff, #939596ff, #EAEEF0ff, #EBEEF1ff, #CDD5DFff);
+$gradient-top-right: linear-gradient(45deg, #C9D2DDff, #939596ff, #EAEEF0ff, #EBEEF1ff, #CDD5DFff);
+$gradient-bottom-right: linear-gradient(135deg, #C9D2DDff, #939596ff, #EAEEF0ff, #EBEEF1ff, #CDD5DFff);
+$gradient-top-left: linear-gradient(225deg, #C9D2DDff, #939596ff, #EAEEF0ff, #EBEEF1ff, #CDD5DFff);
+$gradient-bottom-left: linear-gradient(315deg, #C9D2DDff, #939596ff, #EAEEF0ff, #EBEEF1ff, #CDD5DFff);
+$gradient-radial: radial-gradient(#C9D2DDff, #939596ff, #EAEEF0ff, #EBEEF1ff, #CDD5DFff);
+*/
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--french-gray-2);
+    margin: 0;
+    overflow: hidden; /* Prevent body scrollbars */
+    transition: background-color 0.3s ease; /* Smooth theme transition */
+}
+
+body.dark-mode {
+    --french-gray: #36393F;
+    --battleship-gray: #b9bbbe;
+    --antiflash-white: #2C2F33;
+    --antiflash-white-2: #2C2F33;
+    --french-gray-2: #2C2F33;
+    --shadow-dark: #23272A;
+    --shadow-light: #4A4E55;
+    --text-active: #ffffff;
+}
+
+/* --- Icon Sizing --- */
+
+/* Logo Icon */
+.logo img {
+    width: 40px;
+    height: 40px;
+}
+
+/* Sidebar Navigation Icons */
+.areas img, .settings img {
+    width: 24px;
+    height: 24px;
+}
+
+.player-controls button img {
+    width: 20px;
+    height: 20px;
+    filter: invert(0.6); /* Invert black SVG to a gray that matches the theme */
+}
+
+body.dark-mode .player-controls button img,
+body.dark-mode .areas img,
+body.dark-mode .settings img,
+body.dark-mode .theme-switch-container img {
+    filter: invert(0.85) brightness(1.1);
+}
+
+.mute-button img {
+    width: 24px;
+    height: 24px;
+}
+
+.container {
+    display: flex;
+    gap: 20px;
+}
+.side-bar {
+    background: var(--french-gray);
+    width: 280px; /* Use a fixed width for better control */
+    min-width: 280px; /* Prevent it from getting too small */
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    position: relative;
+}
+
+.logo-and-name {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 30px;
+    padding-left: 5px; /* Align with nav items */
+}
+
+.name {
+    font-weight: 700;
+    font-size: 1.1rem;
+    white-space: nowrap;
+}
+
+.search-area {
+    margin-bottom: 30px;
+    position: relative; /* For potential future icon placement */
+}
+
+.search-bar {
+    width: 100%;
+    padding: 12px 15px;
+    border: none;
+    border-radius: 10px;
+    background-color: var(--french-gray);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    color: var(--battleship-gray);
+    box-sizing: border-box; /* Ensure padding doesn't affect width */
+    outline: none;
+    transition: box-shadow 0.2s ease;
+    /* "Pressed-in" effect by default */
+    box-shadow: inset 3px 3px 6px var(--shadow-dark), inset -3px -3px 6px var(--shadow-light);
+}
+
+.search-bar::placeholder {
+    color: var(--battleship-gray);
+    opacity: 0.8;
+}
+
+.areas, .remain-space {
+    width: 100%;
+}
+
+.music-library, .recent, .favourite, .playlist, .settings {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    color: var(--battleship-gray);
+    font-weight: 500;
+}
+
+.music-library:hover, .recent:hover, .favourite:hover, .playlist:hover, .settings:hover {
+    /* Apply the "popped-out" effect from the music list on hover */
+    box-shadow: 4px 4px 8px var(--shadow-dark), -4px -4px 8px var(--shadow-light);
+}
+
+.music-library:active, .recent:active, .favourite:active, .playlist:active, .settings:active {
+    /* Keep the "pressed-in" effect for the active/click state */
+    box-shadow: inset 3px 3px 6px var(--shadow-dark), inset -3px -3px 6px var(--shadow-light);
+}
+
+.remain-space {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+/* --- Theme Switcher --- */
+.theme-switch-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px 15px;
+    margin-bottom: 10px; /* Space before settings */
+    color: var(--battleship-gray);
+    font-weight: 500;
+}
+
+.theme-switch-container .area-name {
+    flex-grow: 1; /* Take up space to push the toggle right */
+}
+
+.theme-switch-container img {
+    width: 24px;
+    height: 24px;
+}
+
+.theme-switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 26px;
+}
+
+.theme-switch input { display: none; }
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--french-gray);
+    box-shadow: inset 2px 2px 4px var(--shadow-dark), inset -2px -2px 4px var(--shadow-light);
+    transition: .4s;
+    border-radius: 26px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 3px;
+    bottom: 3px;
+    background-color: var(--battleship-gray);
+    box-shadow: 2px 2px 4px var(--shadow-dark), -2px -2px 4px var(--shadow-light);
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider:before {
+    transform: translateX(24px);
+}
+.main-area {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Let it take up remaining space */
+    height: 100vh;
+    padding: 15px 20px 15px 0; /* Add padding for overall spacing */
+    box-sizing: border-box; /* Ensure padding is included in width/height calculation */
+}
+.top-bar {
+    /* height: 12%; Let content define height */
+    display: flex;
+    flex-direction: column;
+    box-shadow: inset 3px 3px 6px var(--shadow-dark), inset -3px -3px 6px var(--shadow-light);
+    padding: 15px 20px;
+    border-radius: 20px;
+}
+.title{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    font-size: 250%;
+    font-weight: 600;
+    color: var(--battleship-gray);
+}
+#title {
+    font-weight: 600;
+}
+
+.two-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* --- Main Content Layout --- */
+.music-library-interface1 {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Make the interface fill the main area */
+    gap: 15px; /* Add space between top-bar, list, and player */
+    min-height: 0; /* Prevent flexbox overflow issues */
+}
+
+.music-list {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 0 10px; /* Horizontal padding */
+    /* Center the list and give it a max width to keep its size */
+    max-width: 950px; /* Constrain width for centering */
+    width: 100%;
+    align-self: center;
+}
+
+.music-list-header {
+    position: sticky;
+    top: 0;
+    /* Use the body background color to hide content scrolling underneath */
+    background: var(--french-gray-2);
+    z-index: 1;
+    padding-top: 5px; /* Give a little space from the top */
+}
+
+.song-info-header {
+    display: grid;
+    /* Match .song-info grid */
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr) minmax(0, 2fr) minmax(0, 1fr);
+    gap: 1rem;
+    padding: 0 15px 10px 15px; /* Match .song horizontal padding + add bottom padding */
+    font-weight: 500;
+    font-size: 0.8rem;
+    color: var(--battleship-gray);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid var(--french-gray);
+}
+
+.header-duration {
+    text-align: right;
+}
+
+.songs {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    
+}
+
+.song {
+    padding: 12px 15px;
+    margin-bottom: 8px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Pop out on hover, but NOT if it's the currently playing song */
+.song:not(.playing):hover {
+    background-color: var(--french-gray);
+    box-shadow:  4px 4px 8px var(--shadow-dark), -4px -4px 8px var(--shadow-light);
+}
+
+/* Style for the currently playing song OR an actively clicked song */
+.song.playing,
+.song:active {
+    background-color: var(--french-gray);
+    box-shadow: inset 3px 3px 6px var(--shadow-dark), inset -3px -3px 6px var(--shadow-light);
+}
+
+.song-info {
+    display: grid;
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr) minmax(0, 2fr) minmax(0, 1fr);
+    align-items: center;
+    width: 100%;
+    gap: 1rem;
+}
+
+.song-title, .song-artist, .album-name {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.song-title {
+    font-weight: 700;
+}
+
+.song-artist, .album-name, .song-duration {
+    color: var(--battleship-gray);
+    font-size: 0.9rem;
+}
+
+.song-duration {
+    text-align: right;
+}
+
+/* --- Player Layout --- */
+.player {
+    flex-shrink: 0; /* Prevent player from shrinking */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 10px 20px;
+    background: var(--french-gray);
+    box-shadow: inset 3px 3px 6px var(--shadow-dark), inset -3px -3px 6px var(--shadow-light);
+    border-radius: 20px;
+}
+
+.music-info {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-rows: auto auto auto;
+    column-gap: 15px;
+    align-items: center;
+    min-width: 200px;
+}
+
+.album-art {
+    grid-row: 1 / 4;
+    width: 50px;
+    height: 50px;
+    border-radius: 8px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.15);
+}
+
+.current-song, .current-artist, .current-album {
+    grid-column: 2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.current-song {
+    grid-row: 1;
+    font-weight: 700;
+    align-self: end;
+}
+
+.current-artist {
+    grid-row: 2;
+    font-size: 0.85rem;
+    color: var(--battleship-gray);
+}
+
+.current-album {
+    grid-row: 3;
+    font-size: 0.85rem;
+    color: var(--battleship-gray);
+    align-self: start;
+}
+
+.controls, .player-controls, .volume-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* --- Neumorphic Player Controls --- */
+.player-controls button, .mute-button {
+    background: var(--french-gray);
+    border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    /* "Popped-out" or raised shadow effect */
+    box-shadow: 4px 4px 8px var(--shadow-dark), -4px -4px 8px var(--shadow-light);
+    transition: all 0.15s ease-in-out;
+    color: var(--battleship-gray); /* Icon color */
+}
+
+.player-controls button:active, .mute-button:active {
+    /* "Pressed-in" effect on click */
+    box-shadow: inset 3px 3px 6px var(--shadow-dark), inset -3px -3px 6px var(--shadow-light);
+    transform: scale(0.98);
+    color: var(--text-active);
+}
+
+.play-button {
+    width: 60px;
+    height: 60px;
+}
+
+/* --- CSS Icon Shapes --- */
+
+/* Play Icon */
+.play-button::before {
+    content: '';
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px 0 10px 16px;
+    border-color: transparent transparent transparent currentColor;
+    margin-left: 5px; /* Center the triangle */
+}
+
+/* Pause Icon using a Unicode character */
+.play-button.playing::before {
+    content: "❚❚"; /* Unicode for pause symbol */
+    font-size: 16px;
+    line-height: 1;
+    border: none;
+    width: auto;
+    height: auto;
+    margin: 0;
+    letter-spacing: 1px;
+}
+
+/* Previous Icon */
+.prev-button::before { /* The bar */
+    content: '';
+    position: absolute;
+    width: 3px;
+    height: 16px;
+    background-color: currentColor;
+    left: 12px;
+}
+.prev-button::after { /* The triangle */
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 8px 10px 8px 0;
+    border-color: transparent currentColor transparent transparent;
+    left: 17px;
+}
+
+/* Next Icon */
+.next-button::before { /* The bar */
+    content: '';
+    position: absolute;
+    width: 3px;
+    height: 16px;
+    background-color: currentColor;
+    right: 12px;
+}
+.next-button::after { /* The triangle */
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 8px 0 8px 10px;
+    border-color: transparent transparent transparent currentColor;
+    right: 17px;
+}
+
+.shuffle {
+    width: 100px;
+    height: 50px;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+    background-color: var(--french-gray);
+    font-weight: bold;
+    color: var(--battleship-gray);
+    box-shadow: 4px 4px 8px var(--shadow-dark), -4px -4px 8px var(--shadow-light);
+    cursor: pointer;
+}
+.shuffle:active {
+    box-shadow: inset 3px 3px 6px var(--shadow-dark), inset -3px -3px 6px var(--shadow-light);
+    transform: scale(0.98);
+    color: var(--text-active);
+}
+.sort-by {
+        width: 100px;
+    height: 50px;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+    background-color: var(--french-gray);
+    font-weight: bold;
+    color: var(--battleship-gray);
+    box-shadow: 4px 4px 8px var(--shadow-dark), -4px -4px 8px var(--shadow-light);
+    cursor: pointer;
+}
+.sort-by-container {
+    position: relative; /* Anchor for the dropdown menu */
+}
+
+.sort-by-container:hover .sort-by {
+    box-shadow: inset 3px 3px 6px var(--shadow-dark), inset -3px -3px 6px var(--shadow-light);
+    transform: scale(0.98);
+    color: var(--text-active);
+}
+
+.sort-options {
+    display: none; /* Hidden by default */
+    position: absolute;
+    top: 100%; /* Position directly below the container to bridge the hover gap */
+    right: 0;
+    list-style: none;
+    /* Use top padding to create a visual gap inside the menu */
+    padding: 20px 10px 10px;
+    margin: 0;
+    background-color: var(--french-gray);
+    box-shadow: 4px 4px 8px var(--shadow-dark), -4px -4px 8px var(--shadow-light); /* Pop-out effect */
+    border-radius: 15px;
+    z-index: 10;
+    width: 120px;
+}
+
+.sort-by-container:hover .sort-options {
+    display: block; /* Show on hover */
+}
+
+.sort-options li {
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    color: var(--battleship-gray); /* Improve readability on new background */
+    transition: all 0.2s ease;
+}
+
+.sort-options li:hover {
+    color: var(--text-active);
+    box-shadow: inset 2px 2px 4px var(--shadow-dark), inset -2px -2px 4px var(--shadow-light);
+}
+.volume-controls {
+    flex-grow: 1;
+    display: flex;
+    margin-left: 60px;
+    align-items: center;
+    gap: 10px;
+}
+.volume-slider {
+    flex-grow: 1;
+    -webkit-appearance: none; /* Remove default styling */
+    width: 100%;
+    height: 8px;
+    border-radius: 5px;
+    box-shadow: inset 3px 3px 6px var(--shadow-dark), inset -3px -3px 6px var(--shadow-light);
+    outline: none;
+    cursor: pointer;
+    transition: all 0.15s ease-in-out;
+}
+.volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Remove default styling */
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: var(--battleship-gray);
+    box-shadow: 4px 4px 8px var(--shadow-dark), -4px -4px 8px var(--shadow-light);
+    cursor: pointer;
+    transition: all 0.15s ease-in-out;
+}
+.volume-slider::-webkit-slider-thumb:active {
+    box-shadow: inset 3px 3px 6px var(--shadow-dark), inset -3px -3px 6px var(--shadow-light);
+    transform: scale(0.98);
+    color: var(--text-active);
+}
+.current-volume {
+    width: 45px; /* Fixed width to prevent layout shift (e.g., 100% -> 99%) */
+    text-align: left;
+    color: var(--battleship-gray);
+    font-size: 0.9rem;
+    white-space: nowrap; /* Prevents text from wrapping */
+}

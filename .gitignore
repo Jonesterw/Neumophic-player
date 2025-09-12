@@ -1,0 +1,4 @@
+# This file tells Git which files to ignore.
+
+# Ignore the auto-generated playlist file.
+playlist.js
