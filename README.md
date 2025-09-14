@@ -4,8 +4,9 @@ A sleek, modern desktop music player featuring a neumorphic design. Built using 
 
 ## Screenshots
 
-<img width="960" height="540" alt="image" src="https://github.com/user-attachments/assets/e0e513f8-b7f1-4094-b144-56bd10e9c46f" />
-<img width="960" height="540" alt="image" src="https://github.com/user-attachments/assets/0a851c00-bb89-440e-ad4f-de1ba0181f07" />
+<img width="960" height="540" alt="image" src="https://github.com/user-attachments/assets/89763381-368c-4b28-9aea-41346a501a63" />
+
+
 
 
 
@@ -78,3 +79,4 @@ Contributions are welcome! Please see `CONTRIBUTING.md` for guidelines.
 ## License
 
 This project is licensed under the MIT License. See the `LICENSE.md` file for details.
+
