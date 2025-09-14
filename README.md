@@ -18,8 +18,8 @@ A sleek, modern desktop music player featuring a neumorphic design. Built using 
 ## Features
 
 - **Automatic Library Scan:** Scans your system’s default `Music` folder for audio files (`.mp3`, `.m4a`, `.wav`, `.ogg`).
-- **Metadata Enhancement:** Enriches your library with artist, album, and high-quality album art from The AudioDB API.
-- **Local Album Art:** Falls back to image files in the `assets/album art` folder if no API art is found.
+- **Instant Startup & Background Fetching:** Starts immediately by quickly scanning your library. Album art and enhanced metadata are then fetched from The AudioDB API in the background without blocking the UI.
+- **Local Album Art Fallback:** If the API doesn't find art, it will try to match songs with images in your local `assets/album art` folder.
 - **Full Player Controls:** Play, pause, next, previous, shuffle, and repeat (all/one) modes.
 - **Dynamic Playlist:**
     - Real-time search to filter your library by title, artist, or album.
@@ -50,9 +50,10 @@ Follow these instructions to run the player locally.
     ```sh
     pip install -r requirements.txt
     ```
-3. **(Optional) Configure API Key:**
-    - For the best metadata results, obtain a free API key from The AudioDB.
-    - Open `generate_playlist.py` and set your key in the `THEAUDIODB_API_KEY` variable.
+3. **Configure API Key (Highly Recommended):**
+    - To enable automatic fetching of album art and improved metadata, you need a free API key from The AudioDB.
+    - Open the `generate_playlist.py` file.
+    - Find the line `THEAUDIODB_API_KEY = "1"` and replace `"1"` with your actual API key.
 
 ### Running the Application
 
@@ -77,4 +78,3 @@ Contributions are welcome! Please see `CONTRIBUTING.md` for guidelines.
 ## License
 
 This project is licensed under the MIT License. See the `LICENSE.md` file for details.
-

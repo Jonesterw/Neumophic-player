@@ -390,9 +390,14 @@ input:checked + .slider:before {
     width: 50px;
     height: 50px;
     border-radius: 8px;
+    background-color: var(--french-gray); /* Placeholder color */
     box-shadow: 2px 2px 5px rgba(0,0,0,0.15);
+    transition: background-color 0.3s ease;
 }
 
+body.dark-mode .album-art {
+    background-color: var(--shadow-dark);
+}
 .current-song, .current-artist, .current-album {
     grid-column: 2;
     white-space: nowrap;
@@ -425,6 +430,50 @@ input:checked + .slider:before {
     gap: 15px;
 }
 
+.progress-controls {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.progress-bar {
+    flex-grow: 1;
+    -webkit-appearance: none;
+    width: 100%;
+    height: 8px;
+    border-radius: 5px;
+    background: transparent; /* The track is handled by the box-shadow */
+    box-shadow: inset 3px 3px 6px var(--shadow-dark), inset -3px -3px 6px var(--shadow-light);
+    outline: none;
+    cursor: pointer;
+}
+
+.progress-bar::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: var(--battleship-gray);
+    box-shadow: 4px 4px 8px var(--shadow-dark), -4px -4px 8px var(--shadow-light);
+    cursor: pointer;
+    transition: all 0.15s ease-in-out;
+}
+
+.progress-bar::-webkit-slider-thumb:active {
+    box-shadow: inset 3px 3px 6px var(--shadow-dark), inset -3px -3px 6px var(--shadow-light);
+}
+
+.current-time,
+.total-duration {
+    width: 40px; /* Fixed width to prevent layout shift */
+    text-align: center;
+    color: var(--battleship-gray);
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
 /* --- Neumorphic Player Controls --- */
 .player-controls button, .mute-button {
     background: var(--french-gray);
@@ -448,6 +497,12 @@ input:checked + .slider:before {
     box-shadow: inset 3px 3px 6px var(--shadow-dark), inset -3px -3px 6px var(--shadow-light);
     transform: scale(0.98);
     color: var(--text-active);
+}
+
+.player-controls button.active {
+    /* Style for when a mode (shuffle/repeat) is active */
+    color: var(--text-active);
+    box-shadow: inset 2px 2px 5px var(--shadow-dark), inset -2px -2px 5px var(--shadow-light);
 }
 
 .play-button {
@@ -598,7 +653,6 @@ input:checked + .slider:before {
 }
 .volume-controls {
     flex-grow: 1;
-    display: flex;
     margin-left: 60px;
     align-items: center;
     gap: 10px;
