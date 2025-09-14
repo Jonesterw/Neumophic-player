@@ -3,8 +3,8 @@
 A sleek, modern desktop music player featuring a neumorphic design. Built using HTML, CSS, and JavaScript for the frontend, with a Python Flask backend to scan your local music library, fetch metadata, and serve the web interface.
 
 ## Screenshots
+<img width="960" height="540" alt="image" src="https://github.com/user-attachments/assets/ecfe9eab-3518-422f-a076-d8d5fc2a7ffd" />
 
-<img width="960" height="540" alt="image" src="https://github.com/user-attachments/assets/89763381-368c-4b28-9aea-41346a501a63" />
 
 
 
@@ -79,4 +79,5 @@ Contributions are welcome! Please see `CONTRIBUTING.md` for guidelines.
 ## License
 
 This project is licensed under the MIT License. See the `LICENSE.md` file for details.
+
 
